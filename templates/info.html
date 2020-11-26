@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info: {{ country_code }}</title>
+</head>
+<body>
+    <div class="name-flag">
+        <img src="https://www.countryflags.io/{{ country_code }}/flat/64.png" alt="flag of {{ country_name }}"><h2>Country: {{ country_name.name }}</h2>
+    </div>
+    <div class="main-content">
+        <p>Coronavirus Cases:</p><aside>{{ counts[0] }}</aside>
+        <br>
+        <p>Deaths:</p><aside>{{ counts[1] }}</aside>
+        <br>
+        <p>Recovered:</p><aside>{{ counts[2] }}</aside>
+    </div>
+</body>
+</html>
