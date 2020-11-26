@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Info: {{ country_code }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Info: {{ country_code }}{% endblock %}
+
+{% block body %}
+<div class="container" style="margin-top: 10px;margin-bottom: 10px;">
     <div class="name-flag">
-        <img src="https://www.countryflags.io/{{ country_code }}/flat/64.png" alt="flag of {{ country_name }}"><h2>Country: {{ country_name.name }}</h2>
+        <img src="https://www.countryflags.io/{{ country_code }}/flat/64.png" alt="flag of {{ country_name }}"><h2 class="country-name" style="margin-top:0;display:inline;padding-left: 5px;">Country: {{ country_name.name }}</h2>
     </div>
-    <div class="main-content">
-        <p>Coronavirus Cases:</p><aside>{{ counts[0] }}</aside>
+    <div>
+        <h3 style="color: black;">Coronavirus Cases:</h3><aside><h4 style="color: black;">{{ counts[0] }}</aside>
         <br>
-        <p>Deaths:</p><aside>{{ counts[1] }}</aside>
+        <h3 style="text-emphasis-color: red;color:red;">Deaths:</h3><aside><h4 style="color: black;">{{ counts[1] }}</h4></aside>
         <br>
-        <p>Recovered:</p><aside>{{ counts[2] }}</aside>
+        <h3 style="color: green;">Recovered:</h3><aside><h4 style="color: black;">{{ counts[2] }}</h4></aside>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}

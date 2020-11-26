@@ -30,10 +30,10 @@ def info(country_code):
     # print(country_name)
     try:
         if str(country_code).lower == 'us':
-            resp = requests.get(f'https://www.worldometers.info/coronavirus/country/us/')
+            resp = requests.get(f'https://www.worldometers.info/coronavirus/country/us/',verify=False)
         else:
-            resp = requests.get(f'https://www.worldometers.info/coronavirus/country/{str(country_name.name).lower()}/')
-            print('here')
+            resp = requests.get(f'https://www.worldometers.info/coronavirus/country/{str(country_name.name).lower()}/', verify=False)
+            # print('here')
         # print(resp.content)
     except HTTPError as e:
         print(e)

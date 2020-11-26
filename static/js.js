@@ -1,14 +1,5 @@
-/**
- * ---------------------------------------
- * This demo was created using amCharts 4.
- * 
- * For more information visit:
- * https://www.amcharts.com/
- * 
- * Documentation is available at:
- * https://www.amcharts.com/docs/v4/
- * ---------------------------------------
- */
+
+am4core.ready(function() {
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
@@ -25,22 +16,24 @@ chart.panBehavior = "rotateLongLat";
 chart.deltaLatitude = -20;
 chart.padding(20,20,20,20);
 
+// limits vertical rotation
+chart.adapter.add("deltaLatitude", function(delatLatitude){
+    return am4core.math.fitToRange(delatLatitude, -90, 90);
+})
+
 // Create map polygon series
 var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
 // Make map load polygon (like country names) data from GeoJSON
 polygonSeries.useGeodata = true;
-//polygonSeries.include = ["BR", "UA", "MX", "CI"];
 
 // Configure series
 var polygonTemplate = polygonSeries.mapPolygons.template;
 polygonTemplate.tooltipText = "{name}";
-polygonTemplate.fill = am4core.color("#FF6633");
-polygonTemplate.stroke = am4core.color("#000033");
+polygonTemplate.fill = am4core.color("#47c78a");
+polygonTemplate.stroke = am4core.color("#454a58");
 polygonTemplate.strokeWidth = 0.5;
-polygonTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
-polygonTemplate.url = "https://www.datadrum.com/main.php?package={id}";
-polygonTemplate.urlTarget = "_blank";
+polygonTemplate.url = "info/{id}";
 
 var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
 graticuleSeries.mapLines.template.line.stroke = am4core.color("#ffffff");
@@ -61,5 +54,9 @@ setTimeout(function(){
 }, 3000)
 
 chart.seriesContainer.events.on("down", function(){
-//  animation.stop();
+if(animation){
+  animation.stop();
+}
 })
+
+}); // end am4core.ready()
